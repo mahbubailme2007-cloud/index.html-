@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Family Graveyard Fund</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{bg:'var(--bg)',card:'var(--card)',ink:'var(--ink)',mut:'var(--mut)',line:'var(--line)',pri:'var(--pri)',soft:'var(--soft)',onpri:'var(--onpri)',gold:'var(--gold)'}}}}
+</script>
+<style>
+:root{--bg:#f7f4ec;--card:#ffffff;--ink:#1f2a24;--mut:#667064;--line:#e4dfd0;--pri:#2f6b4f;--soft:#e6f0e9;--onpri:#ffffff;--gold:#9a7a3a;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111714;--card:#19211c;--ink:#e8ede9;--mut:#9aa89d;--line:#2a352e;--pri:#6fbd96;--soft:#1f2f26;--onpri:#0e1511;--gold:#d2b36b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111714;--card:#19211c;--ink:#e8ede9;--mut:#9aa89d;--line:#2a352e;--pri:#6fbd96;--soft:#1f2f26;--onpri:#0e1511;--gold:#d2b36b;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:40}
+.ar{font-family:"Amiri","Noto Naskh Arabic","Traditional Arabic",serif;direction:rtl}
+.pat{background-image:radial-gradient(circle at 20px 20px,rgba(255,255,255,.08) 2px,transparent 3px),linear-gradient(135deg,#1f4d38,#2f6b4f 55%,#6b8f5e);background-size:40px 40px,100% 100%}
+</style>
+</head>
+<body>
+
+<header class="sticky z-30 border-b border-line bg-card" style="top:env(safe-area-inset-top,0px)">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+    <a href="#top" class="flex items-center gap-2 font-semibold text-pri"><span class="grid h-9 w-9 place-items-center rounded-full bg-pri text-onpri">☪</span><span class="leading-tight" data-b="title"></span></a>
+    <nav class="hidden gap-5 text-sm text-mut md:flex"><a href="#about" class="hover:text-pri">About</a><a href="#notices" class="hover:text-pri">Notices</a><a href="#dashboard" class="hover:text-pri">Dashboard</a><a href="#pay" class="hover:text-pri">How to pay</a></nav>
+    <button id="adminBtn" data-act="admintoggle" class="inline-flex items-center rounded-lg bg-pri px-3 py-2 text-sm font-medium text-onpri hover:opacity-90">Admin access</button>
+  </div>
+  <nav class="flex gap-4 overflow-x-auto border-t border-line px-4 py-2 text-sm text-mut md:hidden"><a href="#about">About</a><a href="#notices">Notices</a><a href="#dashboard">Dashboard</a><a href="#pay">How&nbsp;to&nbsp;pay</a></nav>
+</header>
+
+<section id="top" class="pat relative overflow-hidden text-white">
+  <video id="vid" class="absolute inset-0 hidden h-full w-full object-cover" autoplay muted loop playsinline></video>
+  <div class="absolute inset-0 bg-black/45"></div>
+  <div class="relative mx-auto max-w-4xl px-4 py-16 text-center sm:py-24">
+    <p class="mb-3 text-sm uppercase tracking-widest text-white/80" data-b="tag"></p>
+    <h1 class="text-3xl font-bold sm:text-5xl" data-b="heroTitle"></h1>
+    <p class="mx-auto mt-4 max-w-2xl text-white/90" data-b="heroText"></p>
+    <div class="mx-auto mt-6 max-w-xl rounded-2xl border border-white/25 bg-white/10 p-4 backdrop-blur">
+      <p class="ar text-xl">إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلاَّ مِنْ ثَلاَثَةٍ: صَدَقَةٍ جَارِيَةٍ…</p>
+      <p class="mt-2 text-sm italic">“When a person dies, his deeds end except three: ongoing charity (Sadaqah Jariyah), beneficial knowledge, or a righteous child who prays for him.” — Sahih Muslim</p>
+    </div>
+    <a href="#dashboard" class="mt-6 inline-flex rounded-lg bg-white px-5 py-2 text-sm font-medium text-[#1f4d38] hover:opacity-90">View contributions</a>
+  </div>
+</section>
+
+<main class="mx-auto max-w-6xl space-y-10 px-4 py-8">
+  <section id="about" class="grid gap-4 md:grid-cols-3">
+    <div class="rounded-2xl border border-line bg-card p-4 shadow-sm sm:p-5 md:col-span-2">
+      <h2 class="mb-2 text-xl font-semibold text-pri">Our story</h2>
+      <p class="text-mut" data-b="story"></p>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        <div class="rounded-xl bg-soft p-3"><p class="text-xs text-mut">Founded</p><p class="font-medium" data-b="founded"></p></div>
+        <div class="rounded-xl bg-soft p-3"><p class="text-xs text-mut">Purpose</p><p class="text-sm" data-b="purpose"></p></div>
+      </div>
+      <div id="gal" class="mt-4 grid grid-cols-3 gap-2"></div>
+    </div>
+    <div class="rounded-2xl border border-line bg-card p-4 shadow-sm sm:p-5">
+      <h2 class="mb-2 text-xl font-semibold text-pri">Rules &amp; notices</h2>
+      <ul id="rules" class="space-y-2 text-sm text-mut"></ul>
+    </div>
+  </section>
+
+  <section id="notices">
+    <h2 class="mb-3 text-xl font-semibold text-pri">Notice board</h2>
+    <div id="nlist" class="grid gap-3 md:grid-cols-2"></div>
+  </section>
+
+  <section id="dashboard">
+    <div class="mb-3 flex flex-wrap items-end justify-between gap-2"><h2 class="text-xl font-semibold text-pri">Fund dashboard</h2><p class="text-xs text-mut">Last updated: <span id="upd"></span></p></div>
+    <div id="stats" class="grid grid-cols-2 gap-3 lg:grid-cols-4"></div>
+    <div class="mt-4 rounded-2xl border border-line bg-card p-4 shadow-sm sm:p-5">
+      <div class="mb-3 flex flex-col gap-2 sm:flex-row">
+        <input id="q" placeholder="Search by name or mobile…" class="w-full rounded-lg border border-line bg-card px-3 py-2 text-ink outline-none focus:ring-2 focus:ring-pri sm:flex-1">
+        <select id="month" class="w-full rounded-lg border border-line bg-card px-3 py-2 text-ink sm:w-48"></select>
+        <select id="flt" class="w-full rounded-lg border border-line bg-card px-3 py-2 text-ink sm:w-36"><option value="all">All</option><option value="paid">Paid</option><option value="due">Due</option></select>
+        <button id="addm" data-act="addm" class="hidden rounded-lg bg-pri px-3 py-2 text-sm font-medium text-onpri">+ Add member</button>
+      </div>
+      <div id="tbl" class="overflow-x-auto"></div>
+    </div>
+  </section>
+
+  <section id="pay" class="rounded-2xl border border-line bg-card p-4 shadow-sm sm:p-5">
+    <h2 class="mb-3 text-xl font-semibold text-pri">How to pay</h2>
+    <div id="plist" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <p class="mt-3 text-sm text-mut">Send your monthly contribution and share the transaction ID with the committee so it can be recorded.</p>
+  </section>
+
+  <section id="adm" class="hidden rounded-2xl border-2 border-pri bg-card p-4 shadow-sm sm:p-5"></section>
+</main>
+
+<footer class="border-t border-line py-6 text-center text-sm text-mut"><span data-b="title"></span> · May Allah accept our efforts and grant mercy to our departed.</footer>
+<div id="modal"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const L=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+const S=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const mk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+const CUR=mk(new Date());
+const shift=(m,n)=>{const[y,mo]=m.split("-").map(Number);return mk(new Date(y,mo-1+n,1))};
+const range=(a,b)=>{const r=[];let m=a;while(m<=b&&r.length<120){r.push(m);m=shift(m,1)}return r};
+const mname=m=>{const[y,mo]=m.split("-").map(Number);return new Date(y,mo-1,1).toLocaleString("en",{month:"long",year:"numeric"})};
+const tk=n=>"৳"+Number(n||0).toLocaleString("en");
+const today=()=>new Date().toISOString().slice(0,10);
+const uid=()=>Math.random().toString(36).slice(2,9);
+
+const names=["Abdul Karim","Rahima Begum","Saikat Ahmed","Nazmul Hasan","Ayesha Siddika","Kamal Uddin","Shirin Akter","Tanvir Hossain"];
+const seed=()=>names.map((n,i)=>{const joined=shift(CUR,-(2+i%4));const pay={};range(joined,CUR).forEach((m,j)=>{const paid=m===CUR?i%3!==0:(i+j)%5!==0;pay[m]=paid?{paid:true,date:m+"-0"+(2+(i+j)%7),note:i%2?"bKash TrxID 8K"+(4000+i*37+j):"Cash"}:{paid:false}});return{id:uid(),name:n,phone:"01"+(711000000+i*1234567),fee:500,joined,pay}});
+const DEF={title:"Family Graveyard Fund",tag:"Sadaqah Jariyah for our beloved departed",heroTitle:"A lasting charity for those who came before us",heroText:"Together we keep our family graveyard clean, safe and cared for, so that every prayer and every contribution continues to bring reward.",video:"",gallery:"",story:"Our family graveyard has been the final resting place of our elders for generations. In order to maintain the grounds, boundary wall, pathways and greenery, family members agreed to a small monthly contribution that is collected and tracked openly.",founded:"1 January 2024",purpose:"Cleaning and upkeep, boundary repair, tree care, and arranging dua gatherings.",rules:"Monthly fee is 500 BDT per member.\nPay before the 10th of every month.\nAlways note your payment reference for the record.\nAccounts are open to every contributing family member.",pay:[{id:"p1",type:"bKash",name:"Saikat",num:"01975-025988"},{id:"p2",type:"Nagad",name:"Saikat",num:"01975-025988"}],pw:"admin123",upd:today()};
+const NOTICES=()=>[{id:"n1",title:"Monthly payment reminder",body:"Please pay your 500 BDT monthly contribution before the 10th of every month.",date:today(),pin:true},{id:"n2",title:"Bank deposit update",body:"Bank deposits are now reconciled every Friday. Share your transaction ID after paying.",date:today(),pin:false}];
+
+let cfg=L("gf_cfg",null)||DEF, members=L("gf_members",null)||seed(), notices=L("gf_notices",null)||NOTICES(), admin=false, tab="site";
+const saveCfg=()=>S("gf_cfg",cfg), saveM=()=>S("gf_members",members), saveN=()=>S("gf_notices",notices);
+const touch=()=>{cfg.upd=today();saveCfg();$("#upd").textContent=cfg.upd};
+
+const inp="mt-1 w-full rounded-lg border border-line bg-card px-3 py-2 text-ink outline-none focus:ring-2 focus:ring-pri";
+const B="inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium transition active:scale-95 ";
+const pri=B+"bg-pri text-onpri hover:opacity-90", ghost=B+"border border-line bg-card text-ink hover:bg-soft", danger=B+"border border-red-300 text-red-600 hover:bg-red-50";
+const fld=(l,a,v,t="text")=>`<label class="block text-sm"><span class="text-mut">${l}</span><input type="${t}" value="${esc(v)}" ${a} class="${inp}"></label>`;
+const area=(l,a,v)=>`<label class="block text-sm"><span class="text-mut">${l}</span><textarea rows="3" ${a} class="${inp}">${esc(v)}</textarea></label>`;
+const badge=p=>`<span class="inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${p?"bg-green-100 text-green-800":"bg-red-100 text-red-700"}">${p?"Paid":"Due"}</span>`;
+
+/* ---------- renderers ---------- */
+function bind(){
+  document.querySelectorAll("[data-b]").forEach(e=>e.textContent=cfg[e.dataset.b]);
+  document.title=cfg.title;$("#upd").textContent=cfg.upd;
+  const v=$("#vid");
+  if(cfg.video){if(v.getAttribute("src")!==cfg.video)v.src=cfg.video;v.classList.remove("hidden")}else{v.removeAttribute("src");v.classList.add("hidden")}
+  $("#rules").innerHTML=cfg.rules.split("\n").filter(Boolean).map(r=>`<li class="flex gap-2"><span class="text-gold">◆</span><span>${esc(r)}</span></li>`).join("");
+  const g=cfg.gallery.split("\n").map(s=>s.trim()).filter(Boolean);
+  $("#gal").innerHTML=[0,1,2].map(i=>g[i]?`<img src="${esc(g[i])}" alt="Graveyard" class="h-24 w-full rounded-xl object-cover sm:h-32" onerror="this.style.visibility='hidden'">`:`<div class="pat grid h-24 place-items-center rounded-xl text-2xl text-white/70 sm:h-32">🌿</div>`).join("");
+}
+function renderNotices(){
+  $("#nlist").innerHTML=notices.length?[...notices].sort((a,b)=>b.pin-a.pin).map(n=>`<div class="rounded-2xl border border-line border-l-4 bg-card p-4 shadow-sm ${n.pin?"border-l-[color:var(--gold)]":"border-l-[color:var(--pri)]"}"><div class="flex items-start justify-between gap-2"><h3 class="font-semibold">${n.pin?"📌 ":""}${esc(n.title)}</h3><span class="whitespace-nowrap text-xs text-mut">${esc(n.date)}</span></div><p class="mt-1 text-sm text-mut">${esc(n.body)}</p></div>`).join(""):`<p class="text-mut">No notices right now.</p>`;
+}
+function renderPay(){
+  $("#plist").innerHTML=cfg.pay.map(a=>`<div class="rounded-xl bg-soft p-3"><p class="text-xs uppercase text-mut">${esc(a.type)}</p><p class="font-semibold">${esc(a.name)}: ${esc(a.num)}</p></div>`).join("");
+}
+function renderStats(){
+  let mo=0,life=0,due=0;
+  members.forEach(m=>range(m.joined,CUR).forEach(x=>{const p=m.pay[x];if(p&&p.paid){life+=m.fee;if(x===CUR)mo+=m.fee}else due+=m.fee}));
+  $("#stats").innerHTML=[["Collected this month",tk(mo),"text-pri"],["Lifetime collected",tk(life),"text-pri"],["Outstanding dues",tk(due),"text-red-600"],["Active members",members.length,"text-gold"]]
+    .map(([l,v,c])=>`<div class="rounded-2xl border border-line bg-card p-4 shadow-sm"><p class="text-xs text-mut">${l}</p><p class="mt-1 text-2xl font-bold ${c}">${v}</p></div>`).join("");
+}
+function renderTable(){
+  const q=$("#q").value.toLowerCase(),f=$("#flt").value,mo=$("#month").value;
+  const rows=members.filter(m=>m.joined<=mo&&(m.name.toLowerCase().includes(q)||m.phone.includes(q))).filter(m=>{const p=!!(m.pay[mo]&&m.pay[mo].paid);return f==="all"||(f==="paid")===p});
+  const heads=["Member","Mobile","Fee","Status","Paid on","Transaction / notes"].concat(admin?["Actions"]:[]);
+  $("#tbl").innerHTML=`<table class="w-full min-w-[720px] text-left text-sm"><thead class="border-b border-line text-xs uppercase text-mut"><tr>${heads.map(h=>`<th class="px-2 py-2">${h}</th>`).join("")}</tr></thead><tbody>${rows.map(m=>{
+    const p=m.pay[mo]||{paid:false};
+    return `<tr class="border-b border-line last:border-0"><td class="px-2 py-3 font-medium">${esc(m.name)}</td><td class="px-2 py-3 text-mut">${esc(m.phone)}</td><td class="px-2 py-3">${tk(m.fee)}</td><td class="px-2 py-3">${badge(p.paid)}</td><td class="px-2 py-3 text-mut">${p.paid?esc(p.date):"—"}</td><td class="px-2 py-3 text-mut">${p.paid?esc(p.note):"—"}</td>${admin?`<td class="px-2 py-2"><div class="flex gap-1"><button class="${ghost}" data-act="tg" data-id="${m.id}">${p.paid?"Mark due":"Mark paid"}</button><button class="${ghost}" data-act="editm" data-id="${m.id}">Edit</button><button class="${danger}" data-act="delm" data-id="${m.id}">Delete</button></div></td>`:""}</tr>`}).join("")}</tbody></table>${rows.length?"":`<p class="py-6 text-center text-mut">No members match.</p>`}`;
+}
+function renderAdmin(){
+  const tabs=[["site","Site content"],["notices","Notices"],["accounts","Payment accounts"],["sec","Security"]];
+  let body="";
+  if(tab==="site"){const c=k=>`data-cfg="${k}"`;body=`<div class="grid gap-3 md:grid-cols-2">${fld("Site title",c("title"),cfg.title)}${fld("Tagline",c("tag"),cfg.tag)}${fld("Hero headline",c("heroTitle"),cfg.heroTitle)}${fld("Foundation date",c("founded"),cfg.founded)}${area("Hero description",c("heroText"),cfg.heroText)}${area("Story",c("story"),cfg.story)}${area("Purpose",c("purpose"),cfg.purpose)}${area("Rules (one per line)",c("rules"),cfg.rules)}${fld("Hero background video URL (mp4)",c("video")+' placeholder="https://…/graveyard.mp4"',cfg.video)}${area("Photo URLs (one per line)",c("gallery"),cfg.gallery)}</div>`}
+  if(tab==="notices")body=`<div class="space-y-2"><button class="${pri}" data-act="addn">+ New notice</button>${notices.map(n=>`<div class="flex items-center justify-between gap-2 rounded-xl bg-soft p-3"><span class="text-sm font-medium">${esc(n.title)}</span><span class="flex gap-1"><button class="${ghost}" data-act="editn" data-id="${n.id}">Edit</button><button class="${danger}" data-act="deln" data-id="${n.id}">Remove</button></span></div>`).join("")}</div>`;
+  if(tab==="accounts")body=`<div class="space-y-3">${cfg.pay.map((a,i)=>`<div class="grid grid-cols-2 gap-2 sm:grid-cols-4">${fld("Type",`data-pay="${i}.type"`,a.type)}${fld("Holder",`data-pay="${i}.name"`,a.name)}${fld("Number",`data-pay="${i}.num"`,a.num)}<button class="${danger} self-end" data-act="delpay" data-id="${i}">Delete</button></div>`).join("")}<button class="${pri}" data-act="addpay">+ Add account</button></div>`;
+  if(tab==="sec")body=`<div class="max-w-sm space-y-3">${fld("Admin password",'data-cfg="pw"',cfg.pw)}<p class="text-xs text-mut">Demo only: this password is stored in your browser and visible in the page code, so it is not real security. Connect a backend before using real data.</p><button class="${danger}" data-act="reset">Reset to sample data</button></div>`;
+  $("#adm").innerHTML=`<div class="mb-3 flex flex-wrap items-center gap-2"><h2 class="mr-auto text-xl font-semibold text-pri">Admin panel</h2>${tabs.map(([k,t])=>`<button class="${tab===k?pri:ghost}" data-act="tab" data-id="${k}">${t}</button>`).join("")}</div>${body}`;
+}
+function renderAll(){bind();renderNotices();renderPay();renderStats();renderTable();renderAdmin()}
+function setAdmin(v){
+  admin=v;$("#adminBtn").textContent=v?"Exit admin":"Admin access";
+  $("#adm").classList.toggle("hidden",!v);$("#addm").classList.toggle("hidden",!v);
+  renderAdmin();renderTable();
+}
+
+/* ---------- modal ---------- */
+function openModal(title,inner){
+  $("#modal").innerHTML=`<div data-act="bg" class="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center"><div class="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-card p-5 text-ink shadow-xl"><div class="mb-3 flex items-center justify-between"><h3 class="text-lg font-semibold">${title}</h3><button data-act="close" class="text-2xl leading-none text-mut">×</button></div>${inner}</div></div>`;
+}
+const closeModal=()=>$("#modal").innerHTML="";
+const memberForm=m=>openModal(m?"Edit member":"Add member",`<div class="space-y-3">${fld("Full name",'id="m-name"',m?m.name:"")}${fld("Mobile / contact",'id="m-phone"',m?m.phone:"")}${fld("Monthly fee (BDT)",'id="m-fee"',m?m.fee:500,"number")}${fld("Joined month",'id="m-joined"',m?m.joined:CUR,"month")}<button class="${pri} w-full" data-act="savem" data-id="${m?m.id:""}">Save member</button></div>`);
+const noticeForm=n=>openModal(n?"Edit notice":"New notice",`<div class="space-y-3">${fld("Title",'id="n-title"',n?n.title:"")}${area("Message",'id="n-body"',n?n.body:"")}<label class="flex items-center gap-2 text-sm"><input type="checkbox" id="n-pin" ${n&&n.pin?"checked":""}> Pin to top</label><button class="${pri} w-full" data-act="saven" data-id="${n?n.id:""}">Save notice</button></div>`);
+const loginForm=()=>openModal("Admin access",`${fld("Password",'id="pw" placeholder="Default: admin123"',"","password")}<p id="err" class="mt-2 text-sm text-red-600"></p><button class="${pri} mt-4 w-full" data-act="login">Unlock</button>`);
+
+/* ---------- actions ---------- */
+const acts={
+  close:closeModal,
+  bg:(id,el,e)=>{if(e.target===el)closeModal()},
+  admintoggle:()=>admin?setAdmin(false):loginForm(),
+  login:()=>{if($("#pw").value===cfg.pw){closeModal();setAdmin(true)}else $("#err").textContent="Incorrect password"},
+  tab:id=>{tab=id;renderAdmin()},
+  tg:id=>{const m=members.find(x=>x.id===id),mo=$("#month").value;m.pay[mo]=m.pay[mo]&&m.pay[mo].paid?{paid:false}:{paid:true,date:today(),note:"Marked by admin"};saveM();touch();renderStats();renderTable()},
+  addm:()=>memberForm(null),
+  editm:id=>memberForm(members.find(x=>x.id===id)),
+  savem:id=>{
+    const name=$("#m-name").value.trim();if(!name)return;
+    const d={name,phone:$("#m-phone").value.trim(),fee:Number($("#m-fee").value)||500,joined:$("#m-joined").value||CUR};
+    if(id)Object.assign(members.find(x=>x.id===id),d);else members.push({id:uid(),pay:{},...d});
+    saveM();touch();closeModal();renderStats();renderTable()},
+  delm:id=>{if(confirm("Delete this member?")){members=members.filter(x=>x.id!==id);saveM();touch();renderStats();renderTable()}},
+  addn:()=>noticeForm(null),
+  editn:id=>noticeForm(notices.find(x=>x.id===id)),
+  saven:id=>{
+    const title=$("#n-title").value.trim();if(!title)return;
+    const d={title,body:$("#n-body").value,pin:$("#n-pin").checked};
+    if(id)Object.assign(notices.find(x=>x.id===id),d);else notices.unshift({id:uid(),date:today(),...d});
+    saveN();closeModal();renderNotices();renderAdmin()},
+  deln:id=>{notices=notices.filter(x=>x.id!==id);saveN();renderNotices();renderAdmin()},
+  addpay:()=>{cfg.pay.push({id:uid(),type:"bKash",name:"",num:""});saveCfg();renderPay();renderAdmin()},
+  delpay:id=>{cfg.pay.splice(Number(id),1);saveCfg();renderPay();renderAdmin()},
+  reset:()=>{if(confirm("Reset all data to sample data?")){cfg=JSON.parse(JSON.stringify(DEF));members=seed();notices=NOTICES();saveCfg();saveM();saveN();renderAll()}}
+};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(b&&acts[b.dataset.act])acts[b.dataset.act](b.dataset.id,b,e)});
+document.addEventListener("input",e=>{
+  const t=e.target;
+  if(t.dataset.cfg){cfg[t.dataset.cfg]=t.value;saveCfg();bind()}
+  else if(t.dataset.pay){const[i,k]=t.dataset.pay.split(".");cfg.pay[i][k]=t.value;saveCfg();renderPay()}
+  else if(["q","month","flt"].includes(t.id))renderTable();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="pw")acts.login()});
+$("#vid").addEventListener("error",e=>e.target.classList.add("hidden"));
+
+/* ---------- init ---------- */
+$("#month").innerHTML=range(shift(CUR,-11),CUR).reverse().map(m=>`<option value="${m}">${mname(m)}</option>`).join("");
+renderAll();
+</script>
+</body>
+</html>
